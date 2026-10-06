@@ -1,0 +1,10 @@
+tourney_level,level_name,is_grand_slam
+G,Grand Slam,true
+M,Masters 1000,false
+F,Tour Finals,false
+A,ATP Tour (250/500),false
+D,Davis Cup,false
+O,Olympics,false
+C,Challenger,false
+S,Satellite/ITF,false
+E,Exhibition,false

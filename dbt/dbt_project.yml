@@ -1,0 +1,25 @@
+name: atp_big3
+version: "1.0.0"
+config-version: 2
+profile: atp_big3
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+models:
+  atp_big3:
+    staging:
+      +schema: staging
+      +materialized: view
+    intermediate:
+      +schema: intermediate
+      +materialized: table
+    marts:
+      +schema: marts
+      +materialized: table
+
+seeds:
+  atp_big3:
+    +schema: reference

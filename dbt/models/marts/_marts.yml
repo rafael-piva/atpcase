@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: dim_players
+    columns:
+      - name: player_id
+        tests: [unique, not_null]
+  - name: fct_player_matches
+    description: Incremental fact table, one row per player per match.
+    columns:
+      - name: player_match_id
+        tests: [unique, not_null]
+  - name: mart_age_curves
+    description: Focus players' results per year of age (tour-level matches only).
+    tests:
+      - unique_combination:
+          arguments:
+            combination: "player_id || '-' || age_year"
+    columns:
+      - name: win_pct
+        tests:
+          - not_null
+  - name: mart_slam_titles
+    description: Every Grand Slam champion with age at the title.
+  - name: mart_no1_weeks
+    description: Weekly ranking snapshots at No. 1.
+  - name: mart_pace_comparison
+    description: New-generation players vs the Big 3 at the same age.
+  - name: mart_big3_era_slams
+    description: Every Grand Slam since 2005, with Big 3 players beaten on the way to the title.
+    columns:
+      - name: champion
+        tests: [not_null]
+  - name: mart_vs_big3_h2h
+    description: Head-to-head of challengers and the new generation against the Big 3.

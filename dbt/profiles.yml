@@ -1,0 +1,7 @@
+atp_big3:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ env_var('ATP_DB_PATH', '../data/warehouse.duckdb') }}"
+      threads: 4

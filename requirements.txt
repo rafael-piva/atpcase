@@ -1,0 +1,9 @@
+duckdb>=1.1
+dbt-core>=1.10
+dbt-duckdb>=1.10
+kagglehub>=0.3
+pandas>=2.2
+matplotlib>=3.9
+plotly>=5.24
+streamlit>=1.40
+pytest>=8

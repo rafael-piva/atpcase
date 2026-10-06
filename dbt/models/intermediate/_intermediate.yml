@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: int_player_matches
+    description: Two rows per match (winner view and loser view).
+    columns:
+      - name: player_match_id
+        tests: [unique, not_null]
+      - name: player_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_atp__players')
+                field: player_id
+              config:
+                severity: warn   # a handful of very old players are missing from the master file

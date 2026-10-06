@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_atp__matches
+    description: Typed matches, one row per match.
+    columns:
+      - name: match_id
+        tests: [unique, not_null]
+      - name: tourney_date
+        tests: [not_null]
+      - name: winner_id
+        tests: [not_null]
+      - name: loser_id
+        tests: [not_null]
+      - name: surface
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Hard', 'Clay', 'Grass', 'Carpet']
+      - name: tourney_level
+        tests:
+          - relationships:
+              arguments:
+                to: ref('tourney_levels')
+                field: tourney_level
+
+  - name: stg_atp__players
+    columns:
+      - name: player_id
+        tests: [unique, not_null]
+
+  - name: stg_atp__rankings
+    columns:
+      - name: ranking_date
+        tests: [not_null]
+    tests:
+      - unique_combination:
+          arguments:
+            combination: "ranking_date || '-' || player_id"

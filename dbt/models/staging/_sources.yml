@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: Raw ATP CSVs landed by pipeline/ingest.py. Every column is text.
+    tables:
+      - name: atp_matches
+        description: One row per completed match, one file per season.
+      - name: atp_players
+        description: Player master data.
+      - name: atp_rankings
+        description: Weekly ATP singles rankings.
